@@ -90,44 +90,58 @@
 
 ;; clojure
 
-(define-key clojure-mode-map (kbd "C-c l l") 'align-cljlet)
-(define-key clojure-mode-map (kbd "C-M-z")   'align-cljlet)
+(eval-after-load 'clojure-mode
+  '(progn
+     (define-key clojure-mode-map (kbd "C-c l l") 'align-cljlet)
+     (define-key clojure-mode-map (kbd "C-M-z")   'align-cljlet)))
 
-(define-key paredit-mode-map (kbd "C-c l k") 'paredit-splice-sexp-killing-forward)
-(define-key paredit-mode-map (kbd "C-c l w") 'paredit-splice-sexp-killing-backward)
-(define-key paredit-mode-map (kbd "C-c l l") 'align-cljlet)
-(define-key paredit-mode-map (kbd "C-c l t") 'fill-paragraph)
-(define-key paredit-mode-map (kbd "C-c l j") 'live-paredit-forward-slurp-sexp-neatly)
-(define-key paredit-mode-map (kbd "C-M-e")   'paredit-backward-barf-sexp)
-(define-key paredit-mode-map (kbd "C-M-s")   'paredit-backward-slurp-sexp)
-(define-key paredit-mode-map (kbd "C-M-j")   'live-paredit-forward-slurp-sexp-neatly)
-(define-key paredit-mode-map (kbd "C-M-y")   'paredit-forward-barf-sexp)
-(define-key paredit-mode-map (kbd "C-M-z")   'align-cljlet)
-(define-key paredit-mode-map (kbd "M-S")     'paredit-split-sexp)
-(define-key paredit-mode-map (kbd "M-s")     'paredit-splice-sexp)
-(define-key paredit-mode-map (kbd "M-j")     'paredit-join-sexps)
-(define-key paredit-mode-map (kbd "M-P")     'live-paredit-previous-top-level-form)
-(define-key paredit-mode-map (kbd "M-N")     'live-paredit-next-top-level-form)
-(define-key paredit-mode-map (kbd "C-M-f")   'live-paredit-forward)
-(define-key paredit-mode-map (kbd "M-q")     'live-paredit-reindent-defun)
-(define-key paredit-mode-map (kbd "M-d")     'live-paredit-forward-kill-sexp)
-(define-key paredit-mode-map (kbd "M-k")     'live-paredit-backward-kill)
-(define-key paredit-mode-map (kbd "M-\\")    'live-paredit-delete-horizontal-space)
-(define-key paredit-mode-map (kbd "C-M-i")   'paredit-forward-down)
-(define-key paredit-mode-map (kbd "C-M-n")   'paredit-forward-up)
-(define-key paredit-mode-map (kbd "C-M-p")   'paredit-backward-down)
-(define-key paredit-mode-map (kbd "C-M-u")   'paredit-backward-up)
-(define-key paredit-mode-map (kbd "M-T")     'transpose-sexps)
-(define-key paredit-mode-map (kbd "C-M-k")   'live-paredit-copy-sexp-at-point)
+(eval-after-load 'paredit
+  '(progn
+     (define-key paredit-mode-map (kbd "C-c l k") 'paredit-splice-sexp-killing-forward)
+     (define-key paredit-mode-map (kbd "C-c l w") 'paredit-splice-sexp-killing-backward)
+     (define-key paredit-mode-map (kbd "C-c l l") 'align-cljlet)
+     (define-key paredit-mode-map (kbd "C-c l t") 'fill-paragraph)
+     (define-key paredit-mode-map (kbd "C-c l j") 'live-paredit-forward-slurp-sexp-neatly)
+     (define-key paredit-mode-map (kbd "C-M-e")   'paredit-backward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-s")   'paredit-backward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-M-j")   'live-paredit-forward-slurp-sexp-neatly)
+     (define-key paredit-mode-map (kbd "C-M-y")   'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-M-z")   'align-cljlet)
+     (define-key paredit-mode-map (kbd "M-S")     'paredit-split-sexp)
+     (define-key paredit-mode-map (kbd "M-s")     'paredit-splice-sexp)
+     (define-key paredit-mode-map (kbd "M-j")     'paredit-join-sexps)
+     (define-key paredit-mode-map (kbd "M-P")     'live-paredit-previous-top-level-form)
+     (define-key paredit-mode-map (kbd "M-N")     'live-paredit-next-top-level-form)
+     (define-key paredit-mode-map (kbd "C-M-f")   'live-paredit-forward)
+     (define-key paredit-mode-map (kbd "M-q")     'live-paredit-reindent-defun)
+     (define-key paredit-mode-map (kbd "M-d")     'live-paredit-forward-kill-sexp)
+     (define-key paredit-mode-map (kbd "M-k")     'live-paredit-backward-kill)
+     (define-key paredit-mode-map (kbd "M-\\")    'live-paredit-delete-horizontal-space)
+     (define-key paredit-mode-map (kbd "C-M-i")   'paredit-forward-down)
+     (define-key paredit-mode-map (kbd "C-M-n")   'paredit-forward-up)
+     (define-key paredit-mode-map (kbd "C-M-p")   'paredit-backward-down)
+     (define-key paredit-mode-map (kbd "C-M-u")   'paredit-backward-up)
+     (define-key paredit-mode-map (kbd "M-T")     'transpose-sexps)
+     (define-key paredit-mode-map (kbd "C-M-k")   'live-paredit-copy-sexp-at-point)
+     ;;make ^h delete rather than help
+     (define-key paredit-mode-map (kbd "C-h") 'paredit-backward-delete)
+     (define-key paredit-mode-map (kbd "C-\\") 'paredit-backward-kill-word)
+     ))
 
-;; org-mode
-(define-key org-mode-map (kbd "C-M-f")    'org-metadown)
-(define-key org-mode-map (kbd "C-M-b")    'org-metaup)
-(define-key org-mode-map (kbd "C-M-l")    'org-shiftright)
-(define-key org-mode-map (kbd "C-M-j")    'org-shiftleft)
-(define-key org-mode-map (kbd "C-M-i")    'org-shiftup)
-(define-key org-mode-map (kbd "C-M-k")    'org-shiftdown)
-(define-key org-mode-map (kbd "C-M-_")    'live-decrement-number-at-point)
+
+(eval-after-load 'org-mode
+  '(progn
+     ;; org-mode
+     (define-key org-mode-map (kbd "C-M-f")    'org-metadown)
+     (define-key org-mode-map (kbd "C-M-b")    'org-metaup)
+     (define-key org-mode-map (kbd "C-M-l")    'org-shiftright)
+     (define-key org-mode-map (kbd "C-M-j")    'org-shiftleft)
+     (define-key org-mode-map (kbd "C-M-i")    'org-shiftup)
+     (define-key org-mode-map (kbd "C-M-k")    'org-shiftdown)
+     (define-key org-mode-map (kbd "C-M-_")    'live-decrement-number-at-point)
+     ;;redefine help shortcut
+     (define-key org-mode-map (kbd "M-h") 'help-command)))
+
 
 ;;increment and decrement number at point
 (global-set-key (kbd "C-M-_")  'live-decrement-number-at-point)
@@ -154,17 +168,16 @@
 
 ;;make ^h delete rather than help
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(define-key paredit-mode-map (kbd "C-h") 'paredit-backward-delete)
 
 ;;redefine help shortcut
 (global-set-key (kbd "M-h") 'help-command)
-(define-key org-mode-map (kbd "M-h") 'help-command)
+
 
 ;;allow the deletion of words:
 ;;backward kill word (forward kill word is M-d)
 (global-set-key (kbd "C-\\") 'backward-kill-word)
 (define-key ido-file-completion-map (kbd "C-\\") 'backward-kill-word)
-(define-key paredit-mode-map (kbd "C-\\") 'paredit-backward-kill-word)
+
 
 ;;kill line backwards
 (global-set-key (kbd "M-k") 'live-backwards-kill-line)
@@ -236,8 +249,12 @@
 
 ;; Show documentation/information with M-RET
 (define-key lisp-mode-shared-map (kbd "M-RET") 'live-lisp-describe-thing-at-point)
-(define-key cider-repl-mode-map (kbd "M-RET") 'cider-doc)
-(define-key cider-mode-map (kbd "M-RET") 'cider-doc)
+
+(eval-after-load 'cider
+  '(progn
+     (define-key cider-repl-mode-map (kbd "M-RET") 'cider-doc)
+     (define-key cider-mode-map (kbd "M-RET") 'cider-doc)))
+
 
 (global-set-key (kbd "C-x o") 'win-switch-dispatch)
 

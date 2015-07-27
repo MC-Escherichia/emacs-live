@@ -28,3 +28,10 @@ swank/*
 /ido.last
 /smex-items
 /projectile-bookmarks.eld
+/.cask/
+/.trello/
+/etc/custom/
+/request/
+/semanticdb/
+/dev/
+/Cask

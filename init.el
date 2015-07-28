@@ -1,3 +1,11 @@
+;;; Life with pallet:
+
+(require 'cask "/usr/share/emacs/site-lisp/cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
+
+
 ;; Emacs LIVE
 ;;
 ;; This is where everything starts. Do you remember this place?

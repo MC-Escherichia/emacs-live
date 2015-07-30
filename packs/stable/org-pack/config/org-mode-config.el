@@ -1,7 +1,7 @@
 ;; org mode config
 
-(live-add-pack-lib "org-mode/lisp")
-(live-add-pack-lib "org-mode/contrib/lisp")
+;; (live-add-pack-lib "org-mode/lisp")
+;; (live-add-pack-lib "org-mode/contrib/lisp")
 
 
 

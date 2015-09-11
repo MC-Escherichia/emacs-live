@@ -35,3 +35,8 @@ swank/*
 /semanticdb/
 /dev/
 /Cask
+/.org-id-locations
+/bbdb
+/bookmarks
+/jabber-avatar-cache
+/skewer-cache
